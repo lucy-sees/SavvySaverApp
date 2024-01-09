@@ -71,7 +71,7 @@ To run this project you need:
 Clone this repository to your desired folder:
 
 ```
-git clone git@github.com:lucy-sees/SavvySaver.git
+git clone git@github.com:lucy-sees/SavvySaverApp.git
 ```
 
 ### Install
@@ -118,7 +118,7 @@ rails s
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/lucy-sees/SavvySaverApp/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,6 +138,6 @@ If you like this project, please consider giving it a star.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/lucy-sees/SavvySaver/blob/99c24f509dfec09fad4e2fa1c2a551c3ad4ea7d8/LICENSE) licensed.
+This project is [MIT](https://github.com/lucy-sees/SavvySaverApp/blob/99c24f509dfec09fad4e2fa1c2a551c3ad4ea7d8/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
