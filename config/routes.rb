@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'operations/index'
+  get 'user/index'
   devise_for :users
   resources :entities
   resources :groups
@@ -11,4 +13,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "home#index"
+  get '/', to: 'users#index'
 end
