@@ -13,9 +13,11 @@ class OperationsController < ApplicationController
   end
 
   def new
-    @operation = current_user.operations.build
+    # @operation = current_user.operations.build
+    @operation = Operation.new
     @categories = current_user.categories
-    @category = Category.find(params[:category_id]) if params[:category_id].present?
+    # @category = Category.find_by_id(params[:category_id]) if params[:category_id].present?
+    @category = Category.find_by(user_id: current_user.id)
     @page_name = 'New Transaction'
   end
 
