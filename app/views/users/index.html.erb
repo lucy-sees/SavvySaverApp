@@ -1,14 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<div class="grid-container">
+  <h1 class="splash-title">Savvy Saver</h1>
+  <%= image_tag "budget.png", class:"splash-pic" %>
+  <div class="splash-btns-container light-text">
+    <a href="/users/sign_in", class="white-text blue-bg splash-btns">LOG IN</a>  
+    <a href="/users/sign_up", class="gray-text splash-btns">SIGN UP</a>
+  </div>
 </div>
-
-<%= link_to "New user", new_user_path %>
