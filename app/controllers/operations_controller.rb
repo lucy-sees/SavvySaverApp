@@ -15,12 +15,12 @@ class OperationsController < ApplicationController
   end
 
   def new
-    # @operation = current_user.operations.build
-    @operation = Operation.new
+    @operation = current_user.operations.build
     @categories = current_user.categories
-    # @category = Category.find_by_id(params[:category_id]) if params[:category_id].present?
-    @category = Category.find_by(user_id: current_user.id)
+    @category = @categories.find_by(id: params[:category_id]) || @categories.first
+
     @page_name = 'New Transaction'
+    render :new
   end
 
   def create

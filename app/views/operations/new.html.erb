@@ -26,7 +26,7 @@
   <div class="divider"></div>
   <div class="">
     <%= form.label :category_id, class:"label" %><span>: </span>
-    <%= form.collection_select :category_id, Category.where(user_id: current_user.id), :id, :name, {selected: @category.id}, {class: 'drop-down'} %>
+    <%= form.collection_select :category_id, @categories, :id, :name, { selected: @category.id }, { class: 'drop-down' } %>
   </div>
   <%= form.hidden_field :author_id, value: current_user.id %>
   <div class="sticky-btn-holder helper">
