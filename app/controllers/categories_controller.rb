@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :icon, :user_id)
+    params.require(:category).permit(:name, :icon)
   end
 
   def redirect_unauthenticated_user_to_custom_page
