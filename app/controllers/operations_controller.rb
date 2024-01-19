@@ -22,19 +22,22 @@ class OperationsController < ApplicationController
   end
 
   def create
-    @operation = current_user.operations.find_or_initialize_by(name: operation_params[:name])
+    @operation = current_user.operations.build(operation_params)
     @categories = current_user.categories
-    @category = Category.find(params[:operation][:category_id]) if params[:operation][:category_id].present?
-    @operation.category = @category
+    @category = @categories.find_by(id: params[:operation][:category_id])
+  
+    # Set the category for the operation
+    @operation.category = @category if @category
+  
     if @operation.save
-      Categorization.create(operation: @operation, category: @category)
+      # Assuming you want to create a Categorization when saving the operation
+      Categorization.create(operation: @operation, category: @category) if @category
       redirect_to category_operations_path(@operation.category)
     else
       puts @operation.errors.full_messages
       render :new
     end
   end
-
   private
 
   def operation_params
