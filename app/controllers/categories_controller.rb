@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :redirect_unauthenticated_user_to_custom_page
 
@@ -31,7 +33,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = current_user.categories.find_or_initialize_by(name: category_params[:name])
-  
+
     if @category.persisted?
       flash[:notice] = 'Category already exists'
       render :new
