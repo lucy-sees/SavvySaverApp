@@ -22,7 +22,7 @@ class OperationsController < ApplicationController
   end
 
   def create
-    @operation = current_user.operations.build(operation_params)
+    @operation = current_user.operations.find_or_initialize_by(name: operation_params[:name])
     @categories = current_user.categories
     @category = Category.find(params[:operation][:category_id]) if params[:operation][:category_id].present?
     @operation.category = @category
