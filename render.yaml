@@ -1,0 +1,18 @@
+databases:
+  - name: SAVVYSAVER_DATABASE_USERNAME
+    databaseName: SAVVYSAVER_DATABASE_NAME
+    user: lucy
+
+services:
+  - type: web
+    name: SavvySaver
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: SAVVYSAVER_DATABASE_NAME
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
