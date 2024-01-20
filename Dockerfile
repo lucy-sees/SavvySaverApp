@@ -39,8 +39,13 @@ RUN chmod +x bin/* && \
     sed -i "s/\r$//g" bin/* && \
     sed -i 's/ruby\.exe$/ruby/' bin/*
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Set RAILS_MASTER_KEY during the build
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+
+# Run asset precompilation
+RUN SECRET_KEY_BASE_DUMMY=1 RAILS_MASTER_KEY=${RAILS_MASTER_KEY} ./bin/rails assets:precompile
+
 
 # Final stage for app image
 FROM base
@@ -65,4 +70,8 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
+# Set RAILS_MASTER_KEY during the build
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 
