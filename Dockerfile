@@ -44,7 +44,7 @@ ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 
 # Run asset precompilation
-RUN SECRET_KEY_BASE_DUMMY=1 RAILS_MASTER_KEY=<16_BYTE_KEY> ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 RAILS_MASTER_KEY=da2862053f03340dc571db4acc9a8841 ./bin/rails assets:precompile
 
 
 # Final stage for app image
