@@ -21,6 +21,12 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libvips pkg-config
 
+# Install Bundler
+RUN gem install bundler -v "$(cat Gemfile.lock | grep -A 1 'BUNDLED WITH' | tail -n 1 | tr -d "[:space:]")"
+
+# Install gems
+RUN bundle install
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
